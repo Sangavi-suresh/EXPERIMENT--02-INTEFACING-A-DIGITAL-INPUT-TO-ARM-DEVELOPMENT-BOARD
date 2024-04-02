@@ -1,4 +1,8 @@
 # EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD
+Name : SANGAVI SURESH
+
+Reg No : 212222230130
+
 ## Aim: To Interface a Digital Input  (userpush button  ) to ARM   development board and write a  program to obtain  the data and flash the led  
 ## Components required: STM32 CUBE IDE, ARM IOT development board,  STM programmer tool.
 ## Theory 
@@ -52,12 +56,48 @@ The full form of an ARM is an advanced reduced instruction set computer (RISC) m
 
 ## STM 32 CUBE PROGRAM :
 
+```
+#include "main.h"
+#include "stdbool.h"
+bool pushbutton;
 
+void SystemColck_Config(void);
+static void MX_GPIO_Init(void);
+
+int main(void)
+{
+ HAL_Int();
+ SystemClock_Config();
+ MX_GPIO_Init();
+
+while (1)
+  {
+    pushbutton=HAL_GPIO_ReadPin(GPIOC,GPIO_PIN_13);
+    if(pushbutton==0)
+    {
+    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_SET);
+    	HAL_Delay(2000);
+    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+    	HAL_Delay(2000);
+    }
+    else
+    {
+    	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5, GPIO_PIN_RESET);
+    	HAL_Delay(2000);
+    }
+  }
+```
+![318694630-565293c1-97fd-4ba3-9855-fda077da19e0](https://github.com/Sangavi-suresh/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/118541861/25e33aa1-b524-426d-89d4-caf0d11cd99c)
 
 ## Output  :
  
+### BEFORE:
  
- 
- 
+ ![318695428-cbfe95b7-0a6a-4b69-9b2c-81cb42b4b1d0](https://github.com/Sangavi-suresh/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/118541861/3b6639cf-dc41-4110-b7f8-309bce96ba8e)
+
+### AFTER:
+
+![318695308-31d355c4-c57b-4c50-9d37-425cf8b3a54b](https://github.com/Sangavi-suresh/EXPERIMENT--02-INTEFACING-A-DIGITAL-INPUT-TO-ARM-DEVELOPMENT-BOARD/assets/118541861/e0323162-d4b8-4f12-91ed-47caebb5e147)
+
 ## Result :
 Interfacing a digital Input (Pushbutton ) with ARM microcontroller based IOT development is executed and the results are verified.
